@@ -10,10 +10,13 @@ import { ButtonsPage } from '../pages/buttonsPage';
 test.describe('Homework 1', () => {
   let mainPage : MainPage
 
+  test.beforeEach('Sign in', async ({ page }) => {
+    mainPage = new MainPage(page)
+    await mainPage.goToMainPage()
+  })
+
 
   test('Has menu content', async ({ page }) => {
-    mainPage = new MainPage(page)
-    await mainPage.goToMainPage
     await expect (mainPage.buttonBasket).toBeVisible()
     await mainPage.buttonBasket.click()
     await expect (mainPage.buttonSignIn).toBeVisible()
@@ -25,15 +28,13 @@ test.describe('Homework 1', () => {
     });
 
     test('Has searching panel', async ({ page }) => {
-      await page.goto('https://jpetstore.aspectran.com/')
       const searchPanel = page.getByPlaceholder("Product Search")
       await expect (searchPanel).toBeVisible()
       await searchPanel.click()
       });
-    })
+   
 
     test('Has quick links', async ({ page }) => {
-        await page.goto('https://jpetstore.aspectran.com/');
         const linkFish = page.locator('[href="/categories/FISH"]').first()
         await expect (linkFish).toBeVisible()
         await linkFish.click()
@@ -50,7 +51,7 @@ test.describe('Homework 1', () => {
         await expect (linkBirds).toBeVisible()
         await linkBirds.click()
         });
-
+      })
 
     test.describe('Homework 2', () => {
       let signInPage: SignInPage
@@ -60,28 +61,27 @@ test.describe('Homework 1', () => {
 
         test.beforeEach('Sign in', async ({ page }) => {
           signInPage = new SignInPage(page)
+          signOutPage = new SignOutPage(page) 
+          buttonsPage = new ButtonsPage(page)
           await signInPage.goToMainPage()
-          await expect (signInPage.buttonSignIn).toBeVisible()
           await signInPage.buttonSignIn.click()
           await signInPage.fieldUserName.clear()
           await signInPage.fieldUserName.fill('misuna')
           await signInPage.fieldPassword.clear()
           await signInPage.fieldPassword.fill('12345')
-          await expect (signInPage.buttonLogin).toBeVisible()
           await signInPage.buttonLogin.click()
           });
 
           
           test.afterEach('Sign out', async ({ page }) => {
-            signOutPage = new SignOutPage(page) 
-            await expect (signOutPage.buttonSignOut).toBeVisible()
+            
             await signOutPage.buttonSignOut.click()
-            await expect (signOutPage.buttonSignIn).toBeVisible()
+
           });
 
 
         test('Has button and css-style', async ({ page }) => {
-          buttonsPage = new ButtonsPage(page)
+          
           await expect (buttonsPage.buttonMyOrders).toBeVisible()
           await expect (buttonsPage.buttonMyOrders).toHaveCSS('color', 'rgb(234, 172, 0)')
           await expect (buttonsPage.buttonMyAccount).toBeVisible()

@@ -16,6 +16,6 @@ export class MainPage {
         this.buttonQuestion = page.locator('[href="/help.html"]')  
     }
 async goToMainPage() {
-    this.page.goto('https://jpetstore.aspectran.com/')
+   await this.page.goto('https://jpetstore.aspectran.com/')
 }
 }
