@@ -7,6 +7,7 @@ export class SignInPage extends MainPage {
     readonly fieldUserName: Locator
     readonly fieldPassword: Locator
     readonly buttonLogin: Locator
+    readonly panelFailed: Locator
    
 
     constructor(page: Page) {
@@ -16,5 +17,6 @@ export class SignInPage extends MainPage {
         this.fieldUserName =page.locator('[name="username"]')
         this.fieldPassword = page.locator('[name="password"]')
         this.buttonLogin  = page.locator('text="Login"')
+        this.panelFailed = page.locator('[class="panel failed"]')
     }
 }
