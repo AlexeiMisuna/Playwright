@@ -1,10 +1,13 @@
-
 import { test, expect, Page } from '@playwright/test';
 import { MainPage } from '../pages/mainPage';
 import { Sign } from 'crypto';
 import { SignInPage } from '../pages/signInPage';
 import { SignOutPage } from '../pages/signOutPage';
 import { ButtonsPage } from '../pages/buttonsPage';
+import { exec } from 'child_process';
+import { SearchPanel } from '../pages/searchPanel';
+import { ProductsPage } from '../pages/productsPage';
+import { Orders } from '../pages/ordersPage';
 
 test.describe('Homework 2', () => {
     let signInPage: SignInPage

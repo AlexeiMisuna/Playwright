@@ -1,10 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { MainPage } from '../pages/mainPage';
-import { Sign } from 'crypto';
 import { SignInPage } from '../pages/signInPage';
-import { SignOutPage } from '../pages/signOutPage';
-import { ButtonsPage } from '../pages/buttonsPage';
-import { exec } from 'child_process';
 import { SearchPanel } from '../pages/searchPanel';
 import { ProductsPage } from '../pages/productsPage';
 import { Orders } from '../pages/ordersPage';
@@ -83,7 +78,7 @@ let signInPage: SignInPage
 let myOrders: Orders
 let ordersList: Orders
 
-test.only('My orders list', async ({ page }) => {
+test('My orders list', async ({ page }) => {
   signInPage = new SignInPage(page)
   myOrders = new Orders(page)
   ordersList = new Orders(page)

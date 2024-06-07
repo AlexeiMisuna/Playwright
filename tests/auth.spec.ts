@@ -1,8 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
-import { MainPage } from '../pages/mainPage';
-import { Sign } from 'crypto';
 import { SignInPage } from '../pages/signInPage';
 import { SignOutPage } from '../pages/signOutPage';
+
 
 test.describe('Authorization tests', () => {
     let signInPage: SignInPage
